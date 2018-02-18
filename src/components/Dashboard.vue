@@ -3,7 +3,10 @@
     <ul class="collection with-header">
       <li class="collection-header"><h4>Quotes</h4></li>
       <li v-for="quote in quotes" v-bind:key="quote.id" class="collection-item">
-        {{quote.saying}}
+        “{{quote.saying}}” - <em>{{quote.author}}</em>
+        <router-link class="secondary-content" v-bind:to="{ name: 'view-quote', params: { id: quote.id }} ">
+          <i class="fa fa-eye"></i>
+        </router-link>
       </li>
     </ul>
     <div class="fixed-action-btn">
@@ -15,7 +18,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import db from './FirebaseInit.js'
 export default {
   name: 'dashboard',
@@ -37,3 +39,4 @@ export default {
     })
   }
 }
+</script>
