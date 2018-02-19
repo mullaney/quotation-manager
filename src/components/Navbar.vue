@@ -4,10 +4,10 @@
       <div class="container">
         <router-link to="/" class="brand-logo">Quote Manager</router-link>
         <ul class="right">
-          <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/login">Login</router-link></li>
-          <li><router-link to="/register">Register</router-link></li>
-          <li><button v-on:click="logout">Logout</button></li>
+          <li v-if="isLoggedIn"><router-link to="/">Home</router-link></li>
+          <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
+          <li v-if="!isLoggedIn"><router-link to="/register">Register</router-link></li>
+          <li v-if="isLoggedIn"><button v-on:click="logout">Logout</button></li>
         </ul>
       </div>
     </div>
@@ -23,7 +23,29 @@ export default {
       isLoggedIn: false,
       currentUser: null
     }
-  }  
+  },
+  created () {
+    if (firebase.auth().currentUser) {
+      this.isLoggedIn = true,
+      this.currentUser = firebase.auth().currentUser.email
+    }
+  },
+  methods: {
+    logout: function () {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+        this.$router.go({ path: this.$router.path })
+        })
+    }
+  }
 }
 </script>
 
+<style>
+  li > button {
+    background-color: green;
+    color: white;
+  }
+</style>
