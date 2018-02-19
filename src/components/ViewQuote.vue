@@ -4,6 +4,11 @@
     <div class="author">{{author}}</div>
     <router-link to="/" class="btn grey">Back</router-link>
     <button @click="deleteQuote" class="btn red">Delete</button>
+    <div class="fixed-action-btn">
+      <router-link v-bind:to="{name: 'edit-quote', params: {id: quote_id}}" class="btn-floating btn-large red">
+        <i class="fa fa-pencil"></i>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -19,7 +24,6 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    console.log('to.params.quote_id', to.params.quote_id)
     db.collection('Quotes').doc(to.params.quote_id).get()
       .then(doc => {
         next(vm => {
