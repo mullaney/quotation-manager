@@ -18,12 +18,12 @@ export default new Router({
     component: NewQuote
   },
   {
-    path: '/edit/:id',
+    path: '/edit/:quote_id',
     name: 'edit-quote',
     component: EditQuote
   },
   {
-    path: '/:id',
+    path: '/:quote_id',
     name: 'view-quote',
     component: ViewQuote
   }]

@@ -4,7 +4,7 @@
       <li class="collection-header"><h4>Quotes</h4></li>
       <li v-for="quote in quotes" v-bind:key="quote.id" class="collection-item">
         “{{quote.saying}}” - <em>{{quote.author}}</em>
-        <router-link class="secondary-content" v-bind:to="{ name: 'view-quote', params: { id: quote.id }} ">
+        <router-link class="secondary-content" v-bind:to="{ name: 'view-quote', params: { quote_id: quote.id }}">
           <i class="fa fa-eye"></i>
         </router-link>
       </li>
