@@ -1,28 +1,12 @@
 <template>
-  <div>
-    <div class="container">
-    <div class="row">
-      <div class="col s12 m8 offset-m2">
-        <div class="login card-panel center">
-          <h4>Login</h4>
-          <form action="index.html">
-            <div class="input-field">
-              <i class="material-icons prefix">email</i>
-              <input type="email" id="email" v-model="email">
-              <label for="email">Email Address</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">lock</i>
-              <input type="password" id="password" v-model="password">
-              <label for="password">Password</label>
-            </div>
-            <button v-on:click="login" class="btn btn-large btn-extended blue lighten-4 black-text">Login</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
+  <form action="index.html">
+    <h3>Login</h3>
+    <label for="email">Email Address</label>
+    <input type="email" id="email" v-model="email">
+    <label for="password">Password</label>
+    <input type="password" id="password" v-model="password">
+    <button v-on:click="login">Login</button>
+  </form>
 </template>
 
 <script>
@@ -51,7 +35,30 @@ export default {
 </script>
 
 <style>
-button.login {
-  text-align: right;
-}
+  form {
+    margin: 2rem 2rem;
+    padding: 2rem;
+    box-shadow: 2px 2px 8px black;
+  }
+
+  label, input {
+    display: block;
+  }
+
+  label {
+    font-size: 0.8rem;
+  }
+
+  input {
+    padding: 0.3rem;
+    max-width: 100%;
+    min-width: 200px;
+    margin-bottom: 1rem;
+    border: 1 black solid;
+    background-color: rgba(211, 211, 211, 0.557);
+  }
+
+  h3 {
+    margin-bottom: 0.5rem;
+  }
 </style>

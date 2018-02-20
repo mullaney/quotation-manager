@@ -1,13 +1,20 @@
 <template>
   <div id="view-quote">
-    <div class="big-quote">“{{saying}}”</div>
-    <div class="author">{{author}}</div>
-    <router-link to="/" class="btn grey">Back</router-link>
-    <button @click="deleteQuote" class="btn red">Delete</button>
-    <div class="fixed-action-btn">
-      <router-link v-bind:to="{name: 'edit-quote', params: {id: quote_id}}" class="btn-floating btn-large red">
+    <div id="hero-quote">
+      <div id="hero-saying">
+        “{{saying}}”
+      </div>
+      <div id="hero-author">
+        {{author}}
+      </div>
+    </div>
+    <div id="admin-buttons">
+      <router-link v-bind:to="{name: 'edit-quote', params: {id: quote_id}}" class="button-edit">
         <i class="fa fa-pencil"></i>
       </router-link>
+      <button @click="deleteQuote" class="button-delete">
+        <i class="fa fa-trash"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -60,20 +67,44 @@ export default {
 </script>
 
 <style scoped>
-.big-quote {
-  margin: 5rem 3rem 1rem 3rem;
-  font-size: 2rem;
-}
+  div#hero-quote {
+    margin: 2rem 2rem;
+  }
+  div#hero-saying {
+    font-size: 3rem;
+    line-height: 3.4rem;
+  }
 
-.author {
-  margin-bottom: 3rem;
-  font-size: 1.4rem;
-  display: block;
-  text-align: right;
-  font-style: italic;
-}
+  div#hero-author {
+    margin-top: 1rem;
+    font-family: 'Kalam', cursive; 
+    text-align: right;
+    font-size: 1.4rem;
+  }
+    
+  div#hero-author::before {
+    content: '-';
+  }
 
-.author::before {
-  content: '- '
-}
+  #admin-buttons {
+    display: flex;
+    margin: 2rem;
+    justify-content: flex-end;
+  }
+
+  .button-edit, .button-delete {
+    margin-left: .4rem;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    color: black;
+    border-radius: 0.3rem;
+  }
+
+  .button-edit {
+    background-color: lightgreen;
+  }
+
+  .button-delete {
+    background-color: salmon;
+  }
 </style>

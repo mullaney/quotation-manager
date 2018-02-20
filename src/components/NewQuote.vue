@@ -1,25 +1,13 @@
 <template>
-  <div id="new-quote">
-    <h3>New Quote</h3>
-    <div class="row">
-      <form @submit.prevent="saveQuote" class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input type="text" v-model="saying" required />
-            <label>Saying</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input type="text" v-model="author" required />
-            <label>Author</label>
-          </div>
-        </div>
-        <button type="submit" class="btn">Submit</button>
-        <router-link to="/" class="btn grey">Cancel</router-link>
-      </form>
-    </div>
-  </div>
+  <form @submit.prevent="saveQuote">
+  <h3>New Quote</h3>
+    <label>Saying</label>
+    <input type="text" v-model="saying" required />
+    <label>Author</label>
+    <input type="text" v-model="author" required />
+    <button type="submit">Submit</button>
+    <router-link to="/"><button class="cancel-button">Cancel</button></router-link>
+  </form>
 </template>
 
 <script>
@@ -46,3 +34,44 @@ export default {
   }
 }
 </script>
+
+<style>
+  form {
+    margin: 2rem auto;
+    max-width: 500px;
+    padding: 2rem;
+    box-shadow: 2px 2px 8px black;
+  }
+
+  label, input {
+    display: block;
+  }
+
+  label {
+    font-size: 0.8rem;
+  }
+
+  input {
+    padding: 0.3rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 1 black solid;
+    background-color: rgba(211, 211, 211, 0.557);
+  }
+
+  h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  form button {
+    background-color: lightblue;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    margin-right: 0.4rem;
+  }
+
+  button.cancel-button {
+    background-color: lightsalmon;
+  }
+</style>

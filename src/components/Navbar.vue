@@ -3,8 +3,7 @@
     <router-link to="/" id="nav-logo">Quotations</router-link>
     <ul>
       <li v-if="isLoggedIn"><router-link to="/">Home</router-link></li>
-      <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
-      <li v-if="!isLoggedIn"><router-link to="/register">Register</router-link></li>
+      <li v-if="isLoggedIn"><router-link to="/dashboard">Dashboard</router-link></li>
       <li v-if="isLoggedIn"><span v-on:click="logout">Logout</span></li>
     </ul>
   </nav>
@@ -55,6 +54,10 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+  }
+
+  a {
+    color: black;
   }
 
   li {

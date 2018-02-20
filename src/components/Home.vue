@@ -8,7 +8,9 @@
         {{randomQuote.author}}
       </div>
     </div>
-    <div id="new-random"><i alt="Get new random quote" class="fa fa-random" v-on:click="reload" ></i></div>
+    <div id="new-random">
+      <i alt="Get new random quote" class="fa fa-random" v-on:click="reload" ></i>
+    </div>
   </div>
 </template>
 
