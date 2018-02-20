@@ -1,16 +1,12 @@
 <template>
-  <nav>
-    <div class="nav-wrapper green">
-      <div class="container">
-        <router-link to="/" class="brand-logo">Quote Manager</router-link>
-        <ul class="right">
-          <li v-if="isLoggedIn"><router-link to="/">Home</router-link></li>
-          <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
-          <li v-if="!isLoggedIn"><router-link to="/register">Register</router-link></li>
-          <li v-if="isLoggedIn"><button v-on:click="logout">Logout</button></li>
-        </ul>
-      </div>
-    </div>
+  <nav id="navbar">
+    <router-link to="/" id="nav-logo">Quotations</router-link>
+    <ul>
+      <li v-if="isLoggedIn"><router-link to="/">Home</router-link></li>
+      <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
+      <li v-if="!isLoggedIn"><router-link to="/register">Register</router-link></li>
+      <li v-if="isLoggedIn"><span v-on:click="logout">Logout</span></li>
+    </ul>
   </nav>
 </template>
 
@@ -43,9 +39,29 @@ export default {
 }
 </script>
 
-<style>
-  li > button {
-    background-color: green;
-    color: white;
+<style scoped>
+  #nav-logo {
+    font-family: 'Kalam', cursive;
+    font-size: 1.5rem;
+    color: black;
+  }
+
+  #navbar, #navbar > ul {
+    display: flex;
+    list-style: none;
+  }
+
+  #navbar {
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+
+  li {
+    margin-left: 0.6rem;
+  }
+
+  a:hover, li:hover, #nav-logo:hover {
+    color: lightblue;
   }
 </style>

@@ -6,6 +6,7 @@ import NewQuote from '@/components/NewQuote'
 import EditQuote from '@/components/EditQuote'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
+import Home from '@/components/Home'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -13,6 +14,11 @@ Vue.use(Router)
 let router = new Router({
   routes: [{
     path: '/',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/dashboard',
     name: 'dashboard',
     component: Dashboard,
     meta: {
@@ -76,7 +82,7 @@ router.beforeEach((to, from, next) => {
   } else if (to.matched.some(record => record.meta.requiresGuest)) {
     if (firebase.auth().currentUser) {
       next({
-        path: '/',
+        path: '/dashboard',
         query: {
           redirect: to.fullPath
         }
